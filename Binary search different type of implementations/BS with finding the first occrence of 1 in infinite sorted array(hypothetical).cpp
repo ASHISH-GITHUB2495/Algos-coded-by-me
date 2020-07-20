@@ -11,42 +11,42 @@ using namespace std;
 
 
 
-int binarySearchNearlySorted (int n, int arr[], int num)
+int binarySearchInfiniteFirstOccurence (int n, int arr[], int num)
 {
-	int l = 0 , r = n - 1;
 
-	//all we need is going to search the element in all those probable indices....
+	// first of all we are going to find the end or high point ,ie,
+	// where we gonna apply our range with binary search
+
+	int start = 0 , end = 1;
+
+	while (arr[end] < num)
+		start = end , end = end * 2; // here we are finding the end point....
 
 
 
-	while (l <= r)
+
+
+
+
+	int index = -1;          // we are applying the algorithm for finding first occurence;
+	while (start <= end)
 	{
-		int mid =  l + (r - l) / 2;
+		int mid = start + (end - start) / 2;
 
 		if (arr[mid] == num)
-			return mid;
+		{
+			index = mid;
+			end = mid - 1;
 
-		else if (mid - 1 >= 0 && arr[mid - 1] == num) // checking for overflow
-			return mid - 1;
-
-		else if (mid + 1 <= n - 1 && arr[mid + 1] == num ) //checking for overflow
-			return mid + 1;
-
-
-		else if (arr[mid] > num)
-			r = mid - 2;  //<<<<==== because mid -1 already checked
+		}
+		else if (arr[mid] < num)
+			start = mid + 1;
 		else
-			l = mid + 2;   //<<<<==== because mid +1 already checked
-
-
-
-
+			end = mid - 1;
 
 	}
 
-	return -1;
-
-
+	return index;
 
 
 }
@@ -54,23 +54,27 @@ int binarySearchNearlySorted (int n, int arr[], int num)
 
 int main()
 {
+
 //////////////////////////////////////start...............
-	// we are going to search the elemeent in the NEARLY sorted array
-	//ie, the ith elem may be at ith, i+1 th , or i-1 th position ...
+	//  we have to find the first occurence of 1 in infinite array .. ie
+	// again this is hypothetical
+	// but we will going to have this combining to approaches
+	// first find range where the 1s are lying than we will apply the approach to find the first occurence;
+
 
 
 	int n, q;
-	cin>> n;
-	int arr[n];
+	cin >> n;
+	int  arr[n];
 
 	for (int i = 0; i < n; i++)
 		cin >> arr[i];
-	int i;
-	cin >> i;
+	int   i;
+	i = 1;
 
-	int num = binarySearchNearlySorted(n, arr, i);
+	int  num = binarySearchInfiniteFirstOccurence   (n, arr, i);
 
-	cout << "the element is in index " << num << endl;
+	cout << "the fist index of the element  1 is " << num << endl;
 
 
 
@@ -83,7 +87,6 @@ int main()
 	return 0;
 ////////////////////////////////////////end-.........................
 
-	return 0;
 
 }
 

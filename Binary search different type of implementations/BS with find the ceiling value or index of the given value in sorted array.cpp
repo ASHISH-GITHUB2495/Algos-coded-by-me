@@ -11,7 +11,7 @@ using namespace std;
 
 
 
-int binarySearchRotated (int n, int arr[], int num)
+int binarySearchCeiling (int n, int arr[], int num)
 {
 	int l = 0 , r = n - 1;
 
@@ -59,7 +59,7 @@ int main()
 	int i;
 	cin >> i;
 
-	int num = binarySearchRotated(n, arr, i);
+	int num = binarySearchCeiling(n, arr, i);
 
 	cout << "the floor of the element is " << num << endl;
 

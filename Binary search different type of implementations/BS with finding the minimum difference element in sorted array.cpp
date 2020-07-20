@@ -11,66 +11,59 @@ using namespace std;
 
 
 
-int binarySearchNearlySorted (int n, int arr[], int num)
+int binarySearchMinimumDifference(int n, int arr[], int num)
 {
-	int l = 0 , r = n - 1;
 
-	//all we need is going to search the element in all those probable indices....
+	//Actually we are running simple binary loop ...which wiill give the
+	// actual key element or floor or ceiling based on absolute value
+	//actually the if key not found then the start and end pointing to the absolutes
 
+	int start = 0 , end = n - 1;
 
-
-	while (l <= r)
+	while (start <= end)
 	{
-		int mid =  l + (r - l) / 2;
+		int mid = start + (end - start) / 2;
 
 		if (arr[mid] == num)
-			return mid;
-
-		else if (mid - 1 >= 0 && arr[mid - 1] == num) // checking for overflow
-			return mid - 1;
-
-		else if (mid + 1 <= n - 1 && arr[mid + 1] == num ) //checking for overflow
-			return mid + 1;
-
-
-		else if (arr[mid] > num)
-			r = mid - 2;  //<<<<==== because mid -1 already checked
+			return num; // return value or indices which you want
+		else if (arr[mid] < num)
+			start = mid + 1;
 		else
-			l = mid + 2;   //<<<<==== because mid +1 already checked
-
-
-
-
+			end = mid - 1;
 
 	}
 
-	return -1;
-
-
-
-
+	if (abs(arr[start] - num) <= abs(arr[end] - num))
+		return arr[start];
+	else
+		return arr[end];
 }
 
 
 int main()
 {
+
 //////////////////////////////////////start...............
-	// we are going to search the elemeent in the NEARLY sorted array
-	//ie, the ith elem may be at ith, i+1 th , or i-1 th position ...
+	//  here we gonna find the minimum difference element in array i.e, a key is given and after
+	// subtracting from each which of them absolute value minimum..
+
+
+
 
 
 	int n, q;
-	cin>> n;
-	int arr[n];
+	cin >> n;
+	int  arr[n];
 
 	for (int i = 0; i < n; i++)
 		cin >> arr[i];
-	int i;
+	int   i;
+
 	cin >> i;
 
-	int num = binarySearchNearlySorted(n, arr, i);
+	int  num = binarySearchMinimumDifference   (n, arr, i);
 
-	cout << "the element is in index " << num << endl;
+	cout << "The absolute minimum diffrence is " << num << endl;
 
 
 
@@ -83,7 +76,6 @@ int main()
 	return 0;
 ////////////////////////////////////////end-.........................
 
-	return 0;
 
 }
 

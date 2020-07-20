@@ -11,40 +11,31 @@ using namespace std;
 
 
 
-int binarySearchNearlySorted (int n, int arr[], int num)
+int binarySearchAlphabet (int n, char arr[], char ch)
 {
 	int l = 0 , r = n - 1;
 
 	//all we need is going to search the element in all those probable indices....
 
-
+	char high = -1;
 
 	while (l <= r)
 	{
-		int mid =  l + (r - l) / 2;
+		int mid = l + (r - l) / 2;
 
-		if (arr[mid] == num)
-			return mid;
+		if (arr[mid] > ch)
+		{	high = mid;   // you may store your floor indix
 
-		else if (mid - 1 >= 0 && arr[mid - 1] == num) // checking for overflow
-			return mid - 1;
+			r = mid - 1;
 
-		else if (mid + 1 <= n - 1 && arr[mid + 1] == num ) //checking for overflow
-			return mid + 1;
-
-
-		else if (arr[mid] > num)
-			r = mid - 2;  //<<<<==== because mid -1 already checked
-		else
-			l = mid + 2;   //<<<<==== because mid +1 already checked
-
-
-
+		}
+		else if (arr[mid] <= ch)
+			l = mid + 1;
 
 
 	}
 
-	return -1;
+	return high;
 
 
 
@@ -54,23 +45,24 @@ int binarySearchNearlySorted (int n, int arr[], int num)
 
 int main()
 {
+
 //////////////////////////////////////start...............
-	// we are going to search the elemeent in the NEARLY sorted array
-	//ie, the ith elem may be at ith, i+1 th , or i-1 th position ...
+	// we are going to find the next alphabet of the sorted alphabetical order
+	
 
 
 	int n, q;
-	cin>> n;
-	int arr[n];
+	cin >> n;
+	char arr[n];
 
 	for (int i = 0; i < n; i++)
 		cin >> arr[i];
-	int i;
+	char  i;
 	cin >> i;
 
-	int num = binarySearchNearlySorted(n, arr, i);
+	int  num = binarySearchAlphabet(n, arr, i);
 
-	cout << "the element is in index " << num << endl;
+	cout << "the floor of the element is " << num << endl;
 
 
 
@@ -83,7 +75,6 @@ int main()
 	return 0;
 ////////////////////////////////////////end-.........................
 
-	return 0;
 
 }
 
