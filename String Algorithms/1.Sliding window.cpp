@@ -27,7 +27,7 @@ int32_t main()
 
 getline (cin,T);
 getline(cin,P);
-
+cout<<"hii"<<endl;
 
 for(int l=0,r=P.size()-1;r<T.size();l++,r++){
 	if(match(T,P,l,r))
