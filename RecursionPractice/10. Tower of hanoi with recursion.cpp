@@ -18,13 +18,9 @@ void towerOfHanoi(int n,char s,char h,char d,int &count)
 
 
 
-int32_t main()
+int main()
 {
-#ifndef ONLINE_JUDGE
-	clock_t tStart = clock();
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
-#endif
+
 	ios_base:: sync_with_stdio(false);
 	cin.tie(0);
 //////////////////////////////////////start...............

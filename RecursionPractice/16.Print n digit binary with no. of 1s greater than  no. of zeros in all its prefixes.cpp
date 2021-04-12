@@ -22,13 +22,8 @@ void ndigitbinary(vector<string> &v, int ones, int n, int zeros, string op)
 
 
 
-int32_t main()
+int main()
 {
-#ifndef ONLINE_JUDGE
-	clock_t tStart = clock();
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
-#endif
 	ios_base:: sync_with_stdio(false);
 	cin.tie(0);
 //////////////////////////////////////start...............
@@ -40,8 +35,8 @@ int32_t main()
 	string op = "";
 	ndigitbinary(v, ones, n, zeros, op);
 
-	for (auto i : v)
-		cout << i << endl;
+	for (int i=0;i<v.size();i++)
+		cout << v[i] << endl;
 
 ///////////////////////end-.........................
 

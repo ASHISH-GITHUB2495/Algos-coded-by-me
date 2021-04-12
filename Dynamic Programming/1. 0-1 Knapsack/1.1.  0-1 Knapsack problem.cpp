@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-#define int long long
+//#define int long long
 #define mod 1073741824
 
 // non dp ..only recursion ... next with memoization...
@@ -24,13 +24,9 @@ int knapsack(int wt[], int val[], int w, int n) {
 
 
 
-int32_t main()
+int main()
 {
-#ifndef ONLINE_JUDGE
-	clock_t tStart = clock();
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
-#endif
+
 	ios_base:: sync_with_stdio(false);
 	cin.tie(0);
 //////////////////////////////////////start............

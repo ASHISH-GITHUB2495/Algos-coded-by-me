@@ -1,4 +1,5 @@
 //Demontration for bfs of a graph
+#include<bits/stdc++.h>
 #include<iostream>
 #include<vector>
 #include<list>
@@ -18,20 +19,30 @@ void bfs(int s)
 		for (auto i : adj[curr])
 		{
 			if (!visited[i])
-			{
+			{  // dis[i]=dist[curr]+1;
 				visited[i] = true;
 				cout << i << " ";
 				q.push(i);
 			}
 		}
 	}
+	//return dist[des];
 }
 int main()
 {
+	#ifndef ONLINE_JUDGE
+	clock_t tStart = clock();
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
+    #endif
+	ios_base:: sync_with_stdio(false);
+	cin.tie(0);
+
+	///////.............................
 	int n, e, u, v;
 	cin >> n >> e;
 	adj = new vector <int> [n];
-	visited = new bool [n];
+	visited = new bool [45];
 	for (int i = 0; i < n; i++)
 		visited[i] = false;
 

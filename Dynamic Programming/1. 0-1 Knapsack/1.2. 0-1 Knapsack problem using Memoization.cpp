@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-#define int long long
+//#define int long long
 #define mod 1073741824
 //DP .. using memoization.. let n and w constraint is 100 and 1000 respectively
 
@@ -20,7 +20,7 @@ int knapsack(int wt[], int val[], int w, int n) {
 	if (wt[n - 1] <= w)
 		return dp[n][w]= max(val[n - 1] + knapsack(wt, val, w - wt[n - 1], n - 1), knapsack(wt, val, w, n - 1));
 	else
-		return dp[n][w]=knapsack(wt, val, w - wt[n - 1], n - 1);
+		return dp[n][w]=knapsack(wt, val, w, n - 1);
 
 
 
@@ -28,13 +28,9 @@ int knapsack(int wt[], int val[], int w, int n) {
 
 
 
-int32_t main()
+int main()
 {
-#ifndef ONLINE_JUDGE
-	clock_t tStart = clock();
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
-#endif
+
 	ios_base:: sync_with_stdio(false);
 	cin.tie(0);
 //////////////////////////////////////start............
